@@ -15,8 +15,8 @@ public class Main {
         System.out.println("Ejercicio 1");
         
         ServicioHogar servicioHogar = new ServicioHogar(true, "Calle 1", 3, 50, true, "Pedro Pérez");
-        ServicioOficina servicioOficina = new ServicioOficina(10, "Avenida 2", 5, 60, true, "Oficina SAC");
-        ServicioIndustrial servicioIndustrial = new ServicioIndustrial(1.8, "Zona Industrial", 8, 100, true, "Industria SAC");
+        ServicioOficina servicioOficina = new ServicioOficina(10, "Avenida 2", 5, 60, true, "Oficina 1");
+        ServicioIndustrial servicioIndustrial = new ServicioIndustrial(1.8, "Zona Industrial", 8, 100, true, "Industria 1");
         
         System.out.println("Servicio Hogar - Precio Final: S/ " + servicioHogar.calcularPrecioFinal());
         System.out.println("Servicio Oficina - Precio Final: S/ " + servicioOficina.calcularPrecioFinal());
@@ -32,9 +32,9 @@ public class Main {
         double precioConDescuentoFrecuente = descuentoFrecuente.aplicarDescuento(precioOriginal);
         double precioConDescuentoCampania = descuentoCampania.aplicarDescuento(precioOriginal);
         
-        System.out.println("Precio original: S/ " + precioOriginal);
+        System.out.println("Precio original: s/ " + precioOriginal);
         System.out.println("Precio con Descuento Cliente Frecuente: S/ " + precioConDescuentoFrecuente);
-        System.out.println("Precio con Descuento Campaña: S/ " + precioConDescuentoCampania);
+        System.out.println("Precio con Descuento Campaña: s/ " + precioConDescuentoCampania);
         
         System.out.println("\nEjercicio 3");
         
@@ -46,21 +46,20 @@ public class Main {
         System.out.println("Servicio Oficina con Aromatizante y Desinfección - Precio Final: S/ " + servicioDecorado.calcularPrecioFinal());
         
         System.out.println("\nEjercicio 4");
+        ServicioFactoryIF fabricaHogar = ServicioFactory.getFactory("hogar");
+        ServicioLimpieza ServicioHogar = fabricaHogar.crearServicio(
+         "chaclacayo 111", 3, 50, true, "Juan Pe", true);
+         System.out.println("Servicio Hogar creado. Precio final: S/ " + servicioHogar.calcularPrecioFinal());
+
+        ServicioFactoryIF fabricaOficina = ServicioFactory.getFactory("oficina");
+        ServicioLimpieza ServicioOficina = fabricaOficina.crearServicio(
+         "Av. Central 111", 5, 60, true, "Empresa 1", 10);
+         System.out.println("Servicio Oficina creado. Precio final: S/ " + servicioOficina.calcularPrecioFinal());
+
         
-        ServicioLimpieza servicioDesdeFactory = ServicioFactory.crearServicio(
-            "hogar",
-            "Jr. Los Pinos 456",
-            2.5,
-            45,
-            true,
-            "Ana Gomez",
-            true // esApartamento
-        );
-        
-        System.out.println("Servicio creado por Factory: " + servicioDesdeFactory.getClass().getSimpleName());
-        System.out.println("Cliente: " + servicioDesdeFactory.nombreCliente);
-        System.out.println("Dirección: " + servicioDesdeFactory.direccionCliente);
-        System.out.println("Precio Final: S/ " + servicioDesdeFactory.calcularPrecioFinal());
+    
+    
+    
     }
 }
 

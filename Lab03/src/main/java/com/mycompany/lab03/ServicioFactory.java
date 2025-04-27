@@ -10,20 +10,18 @@ package com.mycompany.lab03;
  */
 public class ServicioFactory {
 
-    public static ServicioLimpieza crearServicio(String tipo, String direccionCliente, double duracionHoras, double tarifaHora, boolean incluyeMateriales, String nombreCliente, Object... extra) {
+    public static ServicioFactoryIF getFactory(String tipo) {
         switch (tipo.toLowerCase()) {
             case "hogar":
-                boolean esApartamento = (boolean) extra[0];
-                return new ServicioHogar(esApartamento, direccionCliente, duracionHoras, tarifaHora, incluyeMateriales, nombreCliente);
+                return new ServicioHogarFactory();
             case "oficina":
-                int cantidadEmpleados = (int) extra[0];
-                return new ServicioOficina(cantidadEmpleados, direccionCliente, duracionHoras, tarifaHora, incluyeMateriales, nombreCliente);
-            case "industrial":
-                double multiplicadorRiesgo = (double) extra[0];
-                return new ServicioIndustrial(multiplicadorRiesgo, direccionCliente, duracionHoras, tarifaHora, incluyeMateriales, nombreCliente);
+                return new ServicioOficinaFactory();
             default:
-                throw new IllegalArgumentException("Tipo de servicio no reconocido: " + tipo);
+                return new ServicioIndustrialFactory();
+            
+                
         }
     }
 }
+
 
